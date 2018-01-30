@@ -16,6 +16,7 @@ gem "devise"
 gem "dotenv-rails"
 
 group :development, :test do
+  gem "figaro"
   gem "pry-rails"
   gem "pry-byebug"
 

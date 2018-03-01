@@ -14,6 +14,7 @@ gem "coffee-rails", "~> 4.2"
 gem "jbuilder", "~> 2.5"
 gem "devise"
 gem "dotenv-rails"
+gem "devise-two-factor"
 
 group :development, :test do
   gem "pry-rails"

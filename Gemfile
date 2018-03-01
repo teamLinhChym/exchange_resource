@@ -14,8 +14,10 @@ gem "coffee-rails", "~> 4.2"
 gem "jbuilder", "~> 2.5"
 gem "devise"
 gem "dotenv-rails"
-
+gem "searchkick", "~> 1.4.1"
+gem "jquery-rails"
 group :development, :test do
+  gem "faker"
   gem "pry-rails"
   gem "pry-byebug"
 

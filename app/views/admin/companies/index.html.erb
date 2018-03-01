@@ -1,0 +1,16 @@
+<%= form_tag admin_companies_search_path, method: :post, remote: true do |f| %>
+  <p>
+    <%= label_tag "Search for" %>
+    <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "Search..." %>
+    <%= submit_tag "Search" %>
+  </p>
+<% end %>
+<table>
+  <thead>
+    <td>name</td>
+    <td>action</td>
+  </thead>
+  <tbody id="companies_search">
+    <%= render "companies", companies: @companies %>
+  </tbody>
+</table>

@@ -4,9 +4,9 @@ namespace :create_env_file do
     dir = "#{Rails.root}/.env"
 
     FileUtils.rm(dir) if File.exists? dir
-    FileUtils.touch(".env") unless File.exists? dir
+    FileUtils.touch ".env"
 
-    File.open("#{dir}", "r+") do |f|
+    File.open("#{dir}", "w") do |f|
       user_name = ENV["username"] || "root"
       password = ENV["password"] || " "
       secret_key = SecureRandom.hex 64

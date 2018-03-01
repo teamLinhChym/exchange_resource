@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< 202af2bda931acf43dec39be80fc316030719431
 ActiveRecord::Schema.define(version: 20180306115622) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -30,9 +29,6 @@ ActiveRecord::Schema.define(version: 20180306115622) do
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
-=======
-ActiveRecord::Schema.define(version: 20180301082339) do
->>>>>>> Add config for devise-two-factor
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "email", default: "", null: false

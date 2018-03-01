@@ -1,0 +1,11 @@
+<h2>Two factor authenticate</h2>
+<%= form_tag do |f| %>
+  <div class="field">
+    <%= f.label :otp %><br />
+    <%= f.text_field :otp_attempt, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>

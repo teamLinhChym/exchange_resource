@@ -1,0 +1,60 @@
+<nav class="header">
+  <a id="logo" href=""><%= image_tag "Logo.png" %></a>
+  <span class="menu-left">
+    <span class="dropdown menu-item">
+      <a class="dropdown-toggle" type="button" data-toggle="dropdown">Hire Freelabcers<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">HTML</a></li>
+          <li><a href="#">CSS</a></li>
+          <li><a href="#">JavaScript</a></li>
+        </ul>
+    </span>
+    <span class="dropdown menu-item">
+      <a class="dropdown-toggle" type="button" data-toggle="dropdown">Find Work<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">HTML</a></li>
+          <li><a href="#">CSS</a></li>
+          <li><a href="#">JavaScript</a></li>
+        </ul>
+    </span>
+    <span class="dropdown menu-item">
+      <a class="dropdown-toggle" type="button" data-toggle="dropdown">How it Works<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">HTML</a></li>
+          <li><a href="#">CSS</a></li>
+          <li><a href="#">JavaScript</a></li>
+        </ul>
+    </span>
+    <span class="menu-item">
+      <span class="header-search">
+        <span class="glyphicon">&#xe003;</span>
+        <%= text_field_tag "input-search", "", placeholder: "Find Freelabcers..." %>
+      </span>
+    </span>
+  </span>
+  <span class="menu-right">
+    <% if current_user %>
+      <span class="header-line"></span>
+      <span id="money-currency">USD $999</span>
+      <i id="noti-heart" class="fa fa-heart-o notification" aria-hidden="true"><span class="count">23</span></i>
+      <i id="noti-mail" class="fa fa-envelope-o notification" aria-hidden="true"><span class="count">3</span></i>
+      <i id="noti-message" class="fa fa-bell-o notification" aria-hidden="true"><span class="count">22</span></i>
+      <%= image_tag "user-default", id: "user-avatar"%>
+      <span class="dropdown menu-item">
+      <a class="dropdown-toggle" type="button" data-toggle="dropdown">Bo Rie<span class="caret"></span></a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Change Passwork</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+    </span>
+    <% else %>
+      <%= button_tag "Post a Project", id: "post-project" %>
+      <span class="header-line"></span>
+      <a href="" class="menu-item">Sign In</a>
+      <a href="" class="menu-item">Sign Up</a>
+    <% end %>
+  </span>
+</nav>
+
+

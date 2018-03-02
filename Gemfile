@@ -14,6 +14,8 @@ gem "coffee-rails", "~> 4.2"
 gem "jbuilder", "~> 2.5"
 gem "devise"
 gem "dotenv-rails"
+gem "bootstrap-sass", "~> 3.3.7"
+gem "jquery-rails"
 
 group :development, :test do
   gem "pry-rails"

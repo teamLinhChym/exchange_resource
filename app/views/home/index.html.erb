@@ -5,3 +5,7 @@ Hello world!
 <% else %>
   <%= link_to('Login', new_user_session_path)  %>
 <% end %>
+
+<div ng-controller="TestController as vm">
+  <button ng-click="vm.test()">Click here to test AJS</button>
+</div>

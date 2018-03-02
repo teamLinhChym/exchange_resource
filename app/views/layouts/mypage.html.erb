@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ExchangeResource</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application_mypage', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application_mypage', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body ng-app="myPageApp">
+    <%= javascript_include_tag 'angular_mypage' %>
+    <%= yield %>
+  </body>
+</html>

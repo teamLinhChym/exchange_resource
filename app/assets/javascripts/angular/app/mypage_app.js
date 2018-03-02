@@ -1,3 +1,3 @@
 (function(){
-  angular.module('myPageApp', []);
+  angular.module('myPageApp', ['commonLib']);
 })();

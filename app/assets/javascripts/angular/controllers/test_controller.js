@@ -4,7 +4,9 @@ var app = angular.module('myPageApp');
 
 app.controller('TestController', TestController);
 
-function TestController() {
+TestController.$inject = ['common'];
+
+function TestController(common) {
   var vm = this;
 
   vm.test = function(){

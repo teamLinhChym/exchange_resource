@@ -1,0 +1,20 @@
+<%= form_tag admin_companies_search_path, method: :get do |f| %>
+  <p>
+    <%= label_tag "Search for" %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag "Search" %>
+  </p>
+<% end %>
+<table>
+  <thead>
+    <td>name</td>
+    <td>action</td>
+  </thead>
+  <% @companies.each do |company| %>
+    <tbody>
+      <td><%= company.name %></td>
+      <td><%= link_to "edit", edit_admin_company_path(company) %></td></t>
+      <td><%= link_to "destroy", admin_company_path(company), method: :delete, data: {confirm: "Are you sure?"} %></td>
+    </tbody>
+  <% end %>
+</table>

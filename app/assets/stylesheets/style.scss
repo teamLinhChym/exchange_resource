@@ -1,0 +1,143 @@
+$main_color: #1fb5ad;
+$none_color: #ffffff00;
+
+.btn-general-1 {
+  border-radius: 20px;
+  color: white;
+  background-color: $main_color;
+  padding: 10px 25px;
+  border: none;
+  box-shadow: 0px 3px 7px 0px $main_color;
+}
+.btn-general-2 {
+  @extend .btn-general-1;
+  background-color: #ffffff00;
+  box-shadow: 0px 1px 7px 0px gray;
+  border: solid 1px white;
+}
+
+.wrapper {
+  font-size: 15px;
+  .header {
+    position: relative;
+    height: 90px;
+    background-color: #f9f9f9;
+    z-index: 1000;
+    a {
+      color: black ;
+    }
+    #logo {
+      display: block;
+      float: left;
+      padding-left: 5%;
+      padding-top: 20px;
+    }
+    .menu-left {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding-left: 50px;
+      .menu-item {
+        padding: 0 10px;
+        .header-search {
+          border: solid 1px $main_color;
+          border-radius: 20px;
+          padding: 10px;
+        }
+        input {
+          border: none;
+          width: 150px;
+          background-color: $none_color;
+        }
+      }
+    }
+    .menu-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 30px;
+      #post-project {
+        @extend .btn-general-1;
+      }
+      .header-line {
+        background-color: #cfcfcf;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 0px;
+        margin: 0 40px;
+        width: 1px;
+        display: inline-flex;
+      }
+      .menu-item {
+        color: $main_color;
+        padding-right: 15px;
+      }
+      #money-currency {
+        font-weight: bold;
+        padding-right: 10px;
+      }
+      .notification {
+        cursor: pointer;
+        padding: 10px;
+        font-size: 20px;
+        color: $main_color;
+        position: relative;
+        .count {
+          color: white;
+          border: none;
+          border-radius: 50px;
+          padding: 2px;
+          font-size: 10px;
+          background-color: red;
+          display: block;
+          position: absolute;
+          width: 14px;
+          text-align: center;
+          top: 5px;
+          right: 0;
+        }
+      }
+      #user-avatar {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        margin-left: 15px;
+        border-radius: 5px;
+      }
+      .dropdown {
+        padding-left: 20px;
+      }
+    }
+  }
+  .body {
+    .screen-mockup {
+      position: relative;
+    }
+  }
+  .footer {
+    .top {
+      position: relative;
+      height: 400px;
+      background-color: #f0f0f0;
+      .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .top-item {
+        list-style-image: url('images/icofont-dotted-right.png');
+        li {
+          text-transform: uppercase;
+          padding: 5px 0;
+        }
+      }
+    }
+    .bottom {
+      height: 90px;
+      background-color: white;
+      text-align: center;
+      padding-top: 35px;
+    }
+  }
+}

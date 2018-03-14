@@ -1,0 +1,20 @@
+{
+  "name": "exchange_resource",
+  "description": "",
+  "main": "",
+  "authors": [
+    "NguyenHoangAnhDung <nguyen.hoang.anh.dung@framgia.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/NguyenHoangAnhDung/exchange_resource",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.9"
+  }
+}

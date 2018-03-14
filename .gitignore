@@ -31,4 +31,4 @@ app/assets/stylesheets/manager/manager_build.css
 app/assets/stylesheets/manager/manager_vendor.css
 app/assets/stylesheets/manager/auth.css
 app/assets/stylesheets/manager/404.css
-public/assets/manager
+public/*

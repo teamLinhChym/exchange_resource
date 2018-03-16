@@ -37,6 +37,13 @@ gulp.task('stylesAuth', function () {
   return buildSingleScss(path.join(conf.paths.src, '/sass/auth.scss'))
     .pipe(gulp.dest(path.join(conf.paths.dest, '/stylesheets/manager/')))
 });
+
+gulp.task('main', function () {
+  return buildSingleScss(path.join(conf.paths.src, '/sass/main.scss'))
+    .pipe(gulp.dest(path.join(conf.paths.dest, '/stylesheets/manager/')))
+});
+
+
 gulp.task('styles404', function () {
   return buildSingleScss(path.join(conf.paths.src, '/sass/404.scss'))
     .pipe(gulp.dest(path.join(conf.paths.dest, '/stylesheets/manager/')))
@@ -47,6 +54,13 @@ gulp.task('stylesAuth-min', function () {
     .pipe($.minifyCss({ processImport: false }))
     .pipe(gulp.dest(path.join(conf.paths.dest, '/stylesheets/manager/')))
 });
+
+gulp.task('main-min', function () {
+  return buildSingleScss(path.join(conf.paths.src, '/sass/main.scss'))
+    .pipe($.minifyCss({ processImport: false }))
+    .pipe(gulp.dest(path.join(conf.paths.dest, '/stylesheets/manager/')))
+});
+
 gulp.task('styles404-min', function () {
   return buildSingleScss(path.join(conf.paths.src, '/sass/404.scss'))
     .pipe($.minifyCss({ processImport: false }))
@@ -58,13 +72,32 @@ function buildStyles() {
     style: 'expanded'
   };
 
-  var cssFiles = gulp.src([
-    path.join(conf.paths.src, '/sass/main.scss'),
+  var injectFiles = gulp.src([
     path.join(conf.paths.src, '/sass/**/_*.scss'),
     '!' + path.join(conf.paths.src, '/sass/theme/conf/**/*.scss'),
     '!' + path.join(conf.paths.src, '/sass/404.scss'),
     '!' + path.join(conf.paths.src, '/sass/auth.scss')
-  ]);
+  ], {read: false});
+
+  var injectOptions = {
+    transform: function (filePath) {
+      filePath = filePath.replace(conf.paths.src + '/sass/', '');
+      return '@import "' + filePath + '";';
+    },
+    starttag: '// injector',
+    endtag: '// endinjector',
+    addRootSlash: false
+  };
+
+  var cssFiles =  gulp.src([
+    path.join(conf.paths.src, '/sass/main.scss')
+  ])
+    .pipe($.inject(injectFiles, injectOptions))
+    .pipe($.sourcemaps.init())
+    .pipe($.sass(sassOptions)).on('error', conf.errorHandler('Sass'))
+    .pipe($.autoprefixer()).on('error', conf.errorHandler('Autoprefixer'))
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest(path.join(conf.paths.dest, '/stylesheets/manager/')))
 
   return cssFiles
     .pipe(concat('manager_build.css'))

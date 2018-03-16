@@ -7,8 +7,8 @@ var $ = require('gulp-load-plugins')({
   pattern: ['del']
 });
 
-gulp.task('build', ['scripts', 'styles', 'styles404', 'stylesAuth']);
-gulp.task('build-dist', ['scripts-min', 'styles-min', 'styles404-min', 'stylesAuth-min']);
+gulp.task('build', ['scripts', 'styles', 'styles404', 'stylesAuth', 'main']);
+gulp.task('build-dist', ['scripts-min', 'styles-min', 'styles404-min', 'stylesAuth-min', 'main-min']);
 gulp.task('build-vendor', ['vendor-scripts', 'vendor-styles', 'other']);
 gulp.task('full-build', ['build-vendor', 'build']);
 gulp.task('full-build-dist', ['build-vendor', 'build-dist']);

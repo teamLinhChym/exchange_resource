@@ -15,6 +15,7 @@ gem "jbuilder", "~> 2.5"
 gem "devise"
 gem "dotenv-rails"
 gem "jquery-rails"
+gem "faker"
 
 group :development, :test do
   gem "pry-rails"

@@ -59,25 +59,7 @@ jobs:
           root: .
           paths: public/assets
 
-  deploy:
-    machine:
-        enabled: true
-    working_directory: ~/exchange_resource
-    environment:
-      - HEROKU_APP: safe-wildwood-45845
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/exchange_resource
-      - run:
-          name: Setup Heroku
-          command: bash .circleci/setup-heroku.sh
-      - run:
-          command: |
-            git push heroku workspace-forwarding:master
-            heroku run rake db:migrate
-            sleep 5 # sleep for 5 seconds to wait for dynos
-            heroku restart
+  
 workflows:
   version: 2
   build-and-deploy:
@@ -89,7 +71,4 @@ workflows:
       - precompile_assets:
           requires:
             - bundle_dependencies
-      - deploy:
-          requires:
-            - rake_test
-            - precompile_assets
+      

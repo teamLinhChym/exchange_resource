@@ -4,6 +4,8 @@ angular.module('BlurAdmin', [
   'ngAnimate',
   'ui.bootstrap',
   'commonLib',
+  'smart-table',
+  'xeditable',
   'BlurAdmin.theme',
   'BlurAdmin.pages'
 ]).config(['$httpProvider', '$locationProvider', defaultConfig]);

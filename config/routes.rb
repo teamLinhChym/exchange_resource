@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   namespace :manager do
     root to: "static_page#dashboard"
+    resources :companies, only: [:index]
   end
 end

@@ -1,0 +1,46 @@
+<%= form_for @company, url: {action: "create"} do |f| %>
+  <strong>Company admin</strong><br>
+  <div class="form-group">
+    <%= f.label "Email" %>*
+    <%= text_field_tag "email" %>
+    <%= f.label "Password" %>*
+    <%= password_field_tag "password" %>
+    <%= f.label "Password confirmation" %>*
+    <%= password_field_tag "password_confirmation" %><br><br>
+  </div>
+  <strong>Company details</strong><br>
+  <div class="form-group">
+    <div class="form-group">
+      <%= f.label :name %>*
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :phone_number %>*
+      <%= f.text_field :phone %>
+    </div><br><br>
+
+    <strong>Please add more than 3 skills for company</strong><br>
+    <div class="form-group">
+      <% @skills.each do |skill| %>
+        <div class="form-group">
+          <%= check_box_tag "skills[]", skill.id, false %>
+          <%= f.label skill.name %>
+        </div>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <%= f.submit t(".btn_create"), class: "submit_company" %>
+    </div>
+  </div>
+<% end %>

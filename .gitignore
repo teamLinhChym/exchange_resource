@@ -33,3 +33,7 @@ app/assets/stylesheets/manager/auth.css
 app/assets/stylesheets/manager/404.css
 app/assets/stylesheets/manager/main.css
 public/*
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml

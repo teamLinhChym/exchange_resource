@@ -1,0 +1,20 @@
+<% if current_user.otp_module_enabled? %>
+  <p><%= link_to "Your TFA's enabled, please click here to disabled", users_turn_off_TFA_path, method: :post %></p>
+  <p><%= link_to "Back to root", root_path %></p>
+<% else %>
+  <table class="qr">
+    <% @qr.modules.each_index do |x| %>
+        <tr>
+          <% @qr.modules.each_index do |y| %>
+              <% if @qr.dark?(x,y) %>
+                  <td class="black"/>
+              <% else %>
+                  <td class="white"/>
+              <% end %>
+          <% end %>
+        </tr>
+    <% end %>
+    <p><%= link_to "After scan QR code, click here to submit", users_turn_on_TFA_path, method: :post %></p>
+    <p><%= link_to "Back to root", root_path %></p>
+  </table>
+<% end %>

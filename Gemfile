@@ -16,6 +16,7 @@ gem "devise"
 gem "dotenv-rails"
 gem "jquery-rails"
 gem "faker"
+gem "active_model_otp"
 
 group :development, :test do
   gem "pry-rails"

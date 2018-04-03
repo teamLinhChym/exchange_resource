@@ -13,5 +13,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
-Rails.application.config.assets.precompile += %w( manager.js manager.css manager/static_page.css )
+Rails.application.config.assets.precompile += %w( manager.coffee manager.css manager/static_page.css )
 Rails.application.config.assets.precompile += %w(application_*.js ng_*.js entry.js application_*.css)

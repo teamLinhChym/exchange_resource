@@ -65,7 +65,7 @@ namespace :deploy do
   desc "Run gulp install"
   task :gulp_install do
     on roles(:app) do
-      execute "cd #{release_path} && npm install gulp -g && gulp"
+      execute "cd #{release_path} && npm install gulp && npm install && gulp"
     end
   end
 end

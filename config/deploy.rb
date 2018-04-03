@@ -29,6 +29,8 @@ set :default_env, fetch(:default_env, {})
     devise_secret_key: ENV["DEVISE_SECRET_KEY"]
   )
 
+before "deploy:assets:precompile", "deploy:gulp_install"
+
 namespace :deploy do
   desc "create database"
   task :create_database do
@@ -57,4 +59,13 @@ namespace :deploy do
     end
   end
   after :publishing, :restart
+end
+
+namespace :deploy do
+  desc "Run gulp install"
+  task :gulp_install do
+    on roles(:app) do
+      execute "cd #{release_path} && npm install gulp -g && gulp"
+    end
+  end
 end

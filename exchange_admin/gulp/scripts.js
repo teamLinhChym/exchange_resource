@@ -5,6 +5,7 @@ var gulp = require('gulp');
 var conf = require('./conf');
 var concat = require('gulp-concat');
 var wiredep = require('wiredep');
+var ngAnnotate = require('gulp-ng-annotate');
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license']
 });
@@ -58,5 +59,6 @@ function buildScripts() {
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.size())
+    .pipe(ngAnnotate())
     .pipe(concat('manager_build.js'))
 };

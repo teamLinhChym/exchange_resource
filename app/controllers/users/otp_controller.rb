@@ -1,5 +1,5 @@
 class Users::OtpController < ApplicationController
-  before_action :authenticate_user!, if: :check_otp_module
+  include TwoFactorAuth
   before_action :set_qr_code, only: :config_TFA
 
   def config_TFA
@@ -20,6 +20,6 @@ class Users::OtpController < ApplicationController
   private
 
   def set_qr_code
-    @qr = RQRCode::QRCode.new(current_user.provisioning_uri, :size => 6, :level => :h ) if current_user.otp_module_disabled?
+    @qr = RQRCode::QRCode.new(current_user.provisioning_uri, size: 6, level: :h ) if current_user.otp_module_disabled?
   end
 end

@@ -1,0 +1,6 @@
+<% if current_user.otp_module_enabled? %>
+  <p><%= link_to "Your TFA's enabled, please click here to disable", users_turn_off_TFA_path, method: :post %></p>
+  <p><%= link_to "Back to root", root_path %></p>
+<% else %>
+  <%= render "qr_code" %>
+<% end %>

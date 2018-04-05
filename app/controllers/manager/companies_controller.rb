@@ -3,7 +3,8 @@ class Manager::CompaniesController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        render json: { companies: Company.all }
+        companies = Company.all
+        render json: { data: companies}
       end
     end
   end

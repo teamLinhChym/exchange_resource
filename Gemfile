@@ -18,6 +18,8 @@ gem "jquery-rails"
 gem "faker"
 gem "active_model_otp"
 gem "rqrcode"
+gem "searchkick"
+gem "rack-cors"
 
 group :development, :test do
   gem "pry-rails"

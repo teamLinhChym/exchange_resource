@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(version: 20180402033517) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "company_skills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.integer "company_id"
+    t.integer "skill_id"
+  end
+
   create_table "skills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "name"
     t.string "description"
@@ -62,6 +67,7 @@ ActiveRecord::Schema.define(version: 20180402033517) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "company_id"
+    t.integer "company_role"
     t.string "otp_secret_key"
     t.integer "otp_module", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true

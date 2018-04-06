@@ -7,4 +7,5 @@ class User < ApplicationRecord
   attr_accessor :otp_token
 
   belongs_to :company
+  enum company_role: [:owner, :admin, :member]
 end

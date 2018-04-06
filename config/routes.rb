@@ -21,4 +21,5 @@ Rails.application.routes.draw do
     root to: "static_page#dashboard"
     resources :companies, only: [:index]
   end
+  resource :companies
 end

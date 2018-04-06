@@ -31,3 +31,11 @@
 
 en:
   hello: "Hello world"
+  companies:
+    new:
+      btn_create: "Create"
+    create:
+      success: "Save data successfully"
+      fail: "Have error when save data, please try again"
+      not_enough_skill: "Company must have at least 3 skills, please try again"
+      password_not_match: "Password and password confirmation do not match, please try again"

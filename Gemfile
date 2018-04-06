@@ -20,6 +20,7 @@ gem "active_model_otp"
 gem "rqrcode"
 gem "searchkick"
 gem "rack-cors"
+gem "config"
 
 group :development, :test do
   gem "pry-rails"

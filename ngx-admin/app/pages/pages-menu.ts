@@ -10,12 +10,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Company',
     icon: 'nb-tables',
-    children: [
-      {
-        title: 'Company',
-        link: '/pages/tables/smart-table',
-      },
-    ],
+    link: '/pages/companies',
   },
   {
     title: 'Auth',

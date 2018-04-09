@@ -12,9 +12,10 @@ const routes: Routes = [{
     component: DashboardComponent,
   },
   {
-    path: 'tables',
-    loadChildren: './tables/tables.module#TablesModule',
-  }, {
+    path: 'companies',
+    loadChildren: './companies/companies.module#CompaniesModule',
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',

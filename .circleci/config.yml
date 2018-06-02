@@ -2,23 +2,28 @@ version: 2.0
 
 jobs:
   build:
+    parallelism: 3
+    working_directory: ~/exchange_resource
     docker:
       - image: circleci/ruby:2.4-node
-      - image: circleci/mysql:5.7.17
-          environment:
-            - MYSQL_HOST=127.0.0.1
-            - MYSQL_ALLOW_EMPTY_PASSWORD=true
-            - MYSQL_DATABASE=exchange_resource_test
-            - MYSQL_USER=root
-    working_directory: ~/exchange_resource
+      - image: mysql:5.7
+        environment:
+          DATABASE_USERNAME: root
+          DATABASE_PASSWORD:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
     steps:
       - checkout
+      - run:
+          name: Install mysql-client
+          command: sudo apt install -y mysql-client
       - attach_workspace:
           at: ~/exchange_resource
       - restore_cache:
           keys:
             - v1-bundle-{{ checksum "Gemfile.lock" }}
-      - run: bundle install --path vendor/bundle
+      - run:
+          name: Bundle Install
+          command: bundle install --path vendor/bundle
       - save_cache:
           key: v1-bundle-{{ checksum "Gemfile.lock" }}
           paths:
@@ -27,48 +32,22 @@ jobs:
           root: .
           paths: vendor/bundle
 
-  rake_test:
-    docker:
-      - image: circleci/ruby:2.4-node
-      - image: circleci/mysql:5.7.17
-    working_directory: ~/exchange_resource
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/exchange_resource
-      - run: bundle --path vendor/bundle
-      - run: bundle exec rake db:create db:schema:load
+      #Database setup
       - run:
-          name: Run tests
-          command: bundle exec rake
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
 
-  precompile_assets:
-    docker:
-      - image: circleci/ruby:2.4-node
-      - image: circleci/mysql:5.7.17
-    working_directory: ~/exchange_resource
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/exchange_resource
-      - run: bundle --path vendor/bundle
       - run:
-          name: Precompile assets
-          command: bundle exec rake assets:precompile
-      - persist_to_workspace:
-          root: .
-          paths: public/assets
+          name: Database setup
+          command: bin/rails db:schema:load --trace
 
-  
-workflows:
-  version: 2
-  build-and-deploy:
-    jobs:
-      - build
-      - rake_test:
-          requires:
-            - build
-      - precompile_assets:
-          requires:
-            - build
-      
+      - run: |
+          bundle exec rspec --profile 10\
+                            --format RspecJunitFormatter \
+                            --out test_results/rspec.xml \
+                            --format progress \
+                            $(circleci tests glob "spec/**/*_spec.rb") | circleci tests spli
+
+      # Save test results for timing anlysis
+      - store_test_results:
+          path: test_results
